@@ -79,7 +79,7 @@ header h2{
 .register-main{
     text-align:center;
     width:100%;
-    height:864px;
+    padding-bottom:319px;
 }
 
 .register-main p{
@@ -110,6 +110,7 @@ header h2{
 
 .form-label{
     font-size:12px;
+    line-height:12px;
     text-align:left;
     display:block;
 }
