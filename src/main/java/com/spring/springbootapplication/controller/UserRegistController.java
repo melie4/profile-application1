@@ -1,7 +1,6 @@
 package com.spring.springbootapplication.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,6 +19,13 @@ import com.spring.springbootapplication.dto.UserRegisterDto;
 
 import jakarta.transaction.Transactional;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.context.SecurityContextRepository;
+
 
 @Controller
 public class UserRegistController {
@@ -29,6 +35,9 @@ public class UserRegistController {
 
     @Autowired
     UserService service;
+
+    @Autowired
+    SecurityContextRepository securityContextRepository;
 
     @RequestMapping("/")
     public ModelAndView index(
@@ -45,7 +54,9 @@ public class UserRegistController {
     public ModelAndView form(
         @ModelAttribute("userModel") @Validated UserRegisterDto dto,
         BindingResult result,
-        ModelAndView mav){
+        ModelAndView mav,
+        HttpServletRequest request,
+        HttpServletResponse response){
 
         if(result.hasErrors()){
         mav.setViewName("signIn");
@@ -68,7 +79,14 @@ public class UserRegistController {
             null,
             loginUser.getAuthorities());
       
-      SecurityContextHolder.getContext().setAuthentication(authentication);
+      SecurityContext context = SecurityContextHolder.createEmptyContext();
+      context.setAuthentication(authentication);
+
+      SecurityContextHolder.setContext(context);
+
+      //認証情報をセッションに保存
+      securityContextRepository.saveContext(context, request, response);
+    
       return new ModelAndView("redirect:/top");
     }
 

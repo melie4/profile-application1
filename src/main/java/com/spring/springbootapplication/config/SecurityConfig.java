@@ -6,7 +6,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.security.web.context.SecurityContextRepository;
 
 @Configuration
 public class SecurityConfig {
@@ -16,11 +21,14 @@ public class SecurityConfig {
             
             http.authorizeHttpRequests(authorize -> 
                 authorize
-                    .requestMatchers("/**").permitAll()
+                    .requestMatchers("/").permitAll()
                     .requestMatchers("/js/**").permitAll()
                     .requestMatchers("/css/**").permitAll()
                     .requestMatchers("/img/**").permitAll()
                     .anyRequest().authenticated()
+            );
+            http.formLogin(form -> form
+                .defaultSuccessUrl("/top")
             );
             
             
@@ -31,6 +39,11 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }    
+
+    @Bean
+    public SecurityContextRepository securityContextRepository() {
+    return new HttpSessionSecurityContextRepository();
+}
 
     
 }
