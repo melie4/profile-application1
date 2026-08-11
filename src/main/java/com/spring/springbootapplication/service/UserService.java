@@ -29,6 +29,10 @@ public class UserService {
 
     //データベースにユーザー登録
     public void userRegister(User user){
+        if(repository.existsByEmail(user.getEmail())){
+            throw new IllegalArgumentException("このメールアドレスは既に登録されています");
+        }
+
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
          LocalDateTime now = LocalDateTime.now();

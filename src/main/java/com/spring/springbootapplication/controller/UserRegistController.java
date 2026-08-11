@@ -1,5 +1,7 @@
 package com.spring.springbootapplication.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
@@ -10,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.validation.BindingResult;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import com.spring.springbootapplication.security.LoginUser;
+import com.spring.springbootapplication.security.LoginUserDetails;
 
 import com.spring.springbootapplication.repository.UserRepository;
 import com.spring.springbootapplication.service.UserService;
@@ -22,9 +24,13 @@ import jakarta.transaction.Transactional;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.context.SecurityContextRepository;
+
+import java.util.Collection;
+
 
 
 @Controller
@@ -50,7 +56,6 @@ public class UserRegistController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    @Transactional
     public ModelAndView form(
         @ModelAttribute("userModel") @Validated UserRegisterDto dto,
         BindingResult result,
@@ -58,6 +63,7 @@ public class UserRegistController {
         HttpServletRequest request,
         HttpServletResponse response){
 
+        //バリデーションチェック時のエラーの表示
         if(result.hasErrors()){
         mav.setViewName("signIn");
         mav.addObject("title", "新規登録");
@@ -69,9 +75,19 @@ public class UserRegistController {
       user.setEmail(dto.getEmail());
       user.setPassword(dto.getPassword());
 
-      service.userRegister(user);
-
-      LoginUser loginUser = new LoginUser(user);
+      //登録処理中のエラーの表示
+      try {service.userRegister(user);}
+      catch (IllegalArgumentException e) {
+        mav.setViewName("signIn");
+        mav.addObject("title", "新規登録");
+        mav.addObject("errorMessage", e.getMessage());
+        return mav;
+        }
+      
+      //権限付与
+      Collection<GrantedAuthority> authorities = new ArrayList<>();
+        
+      LoginUserDetails loginUser = new LoginUserDetails(user,authorities);
 
       UsernamePasswordAuthenticationToken authentication =
           new UsernamePasswordAuthenticationToken(

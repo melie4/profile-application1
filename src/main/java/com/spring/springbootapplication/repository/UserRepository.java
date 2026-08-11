@@ -7,5 +7,6 @@ import com.spring.springbootapplication.entity.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User,Integer> {
+    boolean existsByEmail(String email);
     
 }
