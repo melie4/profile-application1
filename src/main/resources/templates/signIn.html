@@ -41,11 +41,12 @@
                         <label for="email" class = "form-label">メールアドレス</label>
                         <input type="text" class = "form-control" th:field = "*{email}" />
                         <div class = "err" th:if = "${#fields.hasErrors('email')}" th:errors = "*{email}" ></div>
+                        <div class = "err" th:if = "${errorMessage}" th:text = "${errorMessage}"></div>
                     </div>
 
                     <div class = "form">
                         <label for="password" class = "form-label">パスワード</label>
-                        <input type="text" class = "form-control" th:field = "*{password}" />
+                        <input type="password" class = "form-control" th:field = "*{password}" />
                         <div class = "err" th:if = "${#fields.hasErrors('password')}" th:errors = "*{password}" ></div>
                     </div>
 

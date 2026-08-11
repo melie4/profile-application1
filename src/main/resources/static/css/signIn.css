@@ -1,4 +1,3 @@
-/*エラー文字を赤に*/
 * {
     box-sizing: border-box;
 }
@@ -18,8 +17,10 @@ li{
     margin:0 auto;
 }
 
+/*エラー文字を赤に*/
 .err {
     color: red;
+    text-align:left;
 }
 
 .btn{
@@ -35,9 +36,12 @@ li{
     text-align:center;
 }
 
+.btn:hover{
+    cursor: pointer;
+}
+
 /*header*/
 header{
-    /*display: flex;*/
     width:100%;
     height:120px;
     background-color:#1B5678;
@@ -49,7 +53,7 @@ header h2{
     font-weight:bold;
     font-size:36px;
     height:42px;
-    width:201px;
+    /*width:201px;*/
     margin:39px 40px;
 
 }
@@ -60,6 +64,7 @@ header h2{
 
 .login-btn{
     color:#000000BF;
+    background-color:white;
     font-size:18px;
     height:53px;
     width:152px;
@@ -70,6 +75,10 @@ header h2{
     /*以下でbtn内の文字を中央に*/
     line-height:53px;
     text-align:center;
+}
+
+.login-btn:hover{
+    cursor: pointer;
 }
 
 
