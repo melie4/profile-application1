@@ -3,7 +3,7 @@
 <html xmlns:th = "http://www.thymeleaf.org">
 
 <head>
-    <title>sign-in</title>
+    <title>ユーザー新規登録</title>
     <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8"/>
     <link th:href="@{/css/signIn.css}" rel="stylesheet">
 </head>
@@ -15,7 +15,9 @@
                 <h2>My Portfolio</h2>
             </div>
             <div class = "header-right">
-                <input type="submit" class = "login-btn" value = "ログイン" />
+                <form method = "get" th:action = "@{/login}">
+                    <input type="submit" class = "login-btn" value = "ログイン" />
+                </form>
             </div>
             
         </div>
@@ -52,7 +54,7 @@
 
                 </div>
 
-                <input type="submit" class = "btn" value = "登録する" />
+                <button type="submit" class = "btn">登録する</button>
 
             </form>
         </div>
