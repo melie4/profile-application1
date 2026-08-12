@@ -3,7 +3,7 @@
 <html xmlns:th = "http://www.thymeleaf.org">
 
 <head>
-    <title>sign-in</title>
+    <title>ユーザー新規登録</title>
     <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8"/>
     <link th:href="@{/css/signIn.css}" rel="stylesheet">
 </head>
@@ -15,7 +15,9 @@
                 <h2>My Portfolio</h2>
             </div>
             <div class = "header-right">
-                <input type="submit" class = "login-btn" value = "ログイン" />
+                <form method = "get" th:action = "@{/login}">
+                    <input type="submit" class = "login-btn" value = "ログイン" />
+                </form>
             </div>
             
         </div>
@@ -41,17 +43,18 @@
                         <label for="email" class = "form-label">メールアドレス</label>
                         <input type="text" class = "form-control" th:field = "*{email}" />
                         <div class = "err" th:if = "${#fields.hasErrors('email')}" th:errors = "*{email}" ></div>
+                        <div class="err"th:if="${errorMessage}"th:text="${errorMessage}"></div>
                     </div>
 
                     <div class = "form">
                         <label for="password" class = "form-label">パスワード</label>
-                        <input type="text" class = "form-control" th:field = "*{password}" />
+                        <input type="password" class = "form-control" th:field = "*{password}" />
                         <div class = "err" th:if = "${#fields.hasErrors('password')}" th:errors = "*{password}" ></div>
                     </div>
 
                 </div>
 
-                <input type="submit" class = "btn" value = "登録する" />
+                <button type="submit" class = "btn">登録する</button>
 
             </form>
         </div>

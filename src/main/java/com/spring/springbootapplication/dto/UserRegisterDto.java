@@ -15,7 +15,10 @@ public class UserRegisterDto {
     private String name;
 
     @NotBlank
-    @Email
+    @Pattern(
+        regexp = "^$|^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$",
+        message = "メールアドレスが正しい形式ではありません"
+    )
     private String email;
 
     

@@ -1,20 +1,23 @@
 package com.spring.springbootapplication.security;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 import java.util.List;
+import java.util.Collection;
 
 import com.spring.springbootapplication.entity.User;
 
 
-public class LoginUser extends org.springframework.security.core.userdetails.User { 
+public class LoginUserDetails extends org.springframework.security.core.userdetails.User { 
    
     private com.spring.springbootapplication.entity.User user;
 
-    public LoginUser(com.spring.springbootapplication.entity.User user){
+    public LoginUserDetails(com.spring.springbootapplication.entity.User user,Collection<GrantedAuthority> authorities){
         super(
             user.getEmail(), 
             user.getPassword(), 
-            List.of()
+            authorities
         );
 
         this.user = user;

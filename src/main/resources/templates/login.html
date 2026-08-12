@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th = "http://www.thymeleaf.org">
+
+<head>
+    <title>ログイン</title>
+    <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8"/>
+    <link th:href="@{/css/login.css}" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class = "container">
+            <h2>My Portfolio</h2>
+        </div>
+    </header>
+
+    <div class = "login-main">
+        <div class = "container">
+
+            <p th:text = "${title}"></p>
+            <form method = "post" th:action="@{/login}">
+            <input type="hidden"
+                th:name="${_csrf.parameterName}"
+                th:value="${_csrf.token}">
+
+                <div class = "form-all">
+                    <div class = "err" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+                    <div class = "form" >
+                        <label for="email" class = "form-label">メールアドレス</label>
+                        <input type="text" class = "form-control" name = "email" >
+                    </div>
+                    <div class = "form" >
+                        <label for="password" class = "form-label">パスワード</label>
+                        <input type="password" class = "form-control" name = "password" >
+                    </div>
+
+                </div>
+                
+                <button type="submit" class = "btn btn-login">ログインする</button>
+
+                <a th:href="@{/}" class="btn">新規登録する</a>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class = "container">
+            <p>portfolio site</p>
+        </div>
+    </footer>
+
+</body>
+
