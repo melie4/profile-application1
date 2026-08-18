@@ -83,10 +83,8 @@ public class UserRegistController {
         mav.addObject("errorMessage", e.getMessage());
         return mav;
         }
-
       //権限付与
       Collection<GrantedAuthority> authorities = new ArrayList<>();
-
       LoginUserDetails loginUser = new LoginUserDetails(user,authorities);
 
       UsernamePasswordAuthenticationToken authentication =
