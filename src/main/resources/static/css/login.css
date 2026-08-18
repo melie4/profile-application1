@@ -20,7 +20,7 @@ li{
 /*エラー文字を赤に*/
 .err {
     color: red;
-    text-align:left;
+    margin-bottom:20px;
 }
 
 .btn{
@@ -28,18 +28,19 @@ li{
     background-color:#1B5678;
     display:block;
     height:53px;
-    width:232px;
+    width:268px;
     border-radius:4px;
     font-size:18px;
     margin:auto;
     line-height:53px;
     text-align:center;
-
-    transition: none;
+    text-decoration: none;
+    transition:none;
+    
     border: none;
     padding: 0;
     appearance: none;
-   -webkit-appearance: none;
+    -webkit-appearance: none;
 }
 
 .btn:hover{
@@ -52,6 +53,8 @@ header{
     height:120px;
     background-color:#1B5678;
     text-align:center;
+    align-items: center;
+    display:flex;
 }
 
 header h2{
@@ -59,55 +62,21 @@ header h2{
     font-weight:bold;
     font-size:36px;
     height:42px;
-    margin:39px 40px;
 
 }
-
-.header-left{
-    float:left;
-}
-
-.login-btn{
-    color:#000000BF;
-    background-color: white;
-
-    font-size:18px;
-    height:53px;
-    width:152px;
-    float:right;
-    border-radius:4px;
-    margin:34px 40px 33px 40px;
-    
-    /*以下でbtn内の文字を中央に*/
-    line-height:53px;
-    text-align:center;
-
-    transition: none;
-    border: none;
-    padding: 0;
-    appearance: none;
-   -webkit-appearance: none;
-}
-
-.login-btn:hover{
-    cursor: pointer;
-}
-
-
-
 
 /*main*/
-.register-main{
+.login-main{
     text-align:center;
     width:100%;
-    padding-bottom:319px;
+    padding-bottom:310px;
 }
 
-.register-main p{
+.login-main p{
     font-size:36px;
     font-weight:normal;
     margin-top:80px;
-    margin-bottom:76px;
+    margin-bottom:80px;
 }
 
 .form-all{
@@ -136,6 +105,15 @@ header h2{
     display:block;
 }
 
+.btn-login{
+    margin-bottom:48px;
+    transition:none;
+}
+
+.btn-login:active{
+    transform:none;
+}
+
 
 /*footer*/
 footer{
@@ -154,4 +132,5 @@ footer p{
     font-size:18px;
     margin:0;
 }
+
 

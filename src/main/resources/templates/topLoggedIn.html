@@ -3,12 +3,18 @@
 <html xmlns:th = "http://www.thymeleaf.org">
 
 <head>
-    <title>sign-in</title>
+    <title>top-loggedIn</title>
     <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8"/>
-    <link th:href="@{/css/signIn.css}" rel="stylesheet">
+    <link th:href="@{/css/top.css}" rel="stylesheet">
 </head>
 
 <body>
     <h2>Top画面</h2>
+
+    <footer>
+        <div class = "container">
+            <p th:text = "${userName}">portfolio site</p>
+        </div>
+    </footer>
 
 </body>    

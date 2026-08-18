@@ -35,7 +35,7 @@ import java.util.Collection;
 
 @Controller
 public class UserRegistController {
-    
+
     @Autowired
     UserRepository repository;
 
@@ -51,7 +51,7 @@ public class UserRegistController {
         ModelAndView mav){
       mav.setViewName("signIn");
       mav.addObject("title", "新規登録");
-      
+
       return mav;
     }
 
@@ -83,10 +83,8 @@ public class UserRegistController {
         mav.addObject("errorMessage", e.getMessage());
         return mav;
         }
-      
       //権限付与
       Collection<GrantedAuthority> authorities = new ArrayList<>();
-        
       LoginUserDetails loginUser = new LoginUserDetails(user,authorities);
 
       UsernamePasswordAuthenticationToken authentication =
@@ -94,7 +92,7 @@ public class UserRegistController {
             loginUser,
             null,
             loginUser.getAuthorities());
-      
+
       SecurityContext context = SecurityContextHolder.createEmptyContext();
       context.setAuthentication(authentication);
 
@@ -102,15 +100,8 @@ public class UserRegistController {
 
       //認証情報をセッションに保存
       securityContextRepository.saveContext(context, request, response);
-    
+
       return new ModelAndView("redirect:/top");
     }
 
-    @RequestMapping("/top")
-    public ModelAndView index(ModelAndView mav) {
-        mav.setViewName("topLoggedIn");
-        return mav;
-    }
-    
-
-}
+}    

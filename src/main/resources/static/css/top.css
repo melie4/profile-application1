@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Roboto";
+}
+
+li{
+    list-style:none;
+}
+
+.container{
+    max-width:1440px;
+    width:100%;
+    margin:0 auto;
+}
+
+/*エラー文字を赤に*/
+.err {
+    color: red;
+    text-align:left;
+}
+
+.btn{
+    color:white;
+    background-color:#1B5678;
+    display:block;
+    /*height:53px;
+    width:232px;*/
+    padding:16px 80px;
+    border-radius:4px;
+    font-size:18px;
+    margin:auto;
+    line-height:53px;
+    text-align:center;
+}
+
+.btn:hover{
+    cursor: pointer;
+}
+
+/*footer*/
+footer{
+    background-color:#1B5678;
+    height:40px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+footer p{
+    display:inline-block;
+    color:#FFFFFF;
+    font-size:18px;
+    margin:0;
+}
+
+

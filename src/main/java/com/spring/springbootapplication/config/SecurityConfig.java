@@ -10,11 +10,22 @@ import org.springframework.security.web.context.HttpSessionSecurityContextReposi
 import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
-import org.springframework.security.web.context.SecurityContextRepository;
+import com.spring.springbootapplication.security.LoginFailureHandler;
+import com.spring.springbootapplication.service.LoginUserDetailsService;
+
 
 @Configuration
 public class SecurityConfig {
+    private final LoginFailureHandler failureHandler;
+    private final LoginUserDetailsService userDetailsService;
+
+    public SecurityConfig(LoginFailureHandler failureHandler,
+                        LoginUserDetailsService userDetailsService){
+        this.failureHandler = failureHandler; 
+        this.userDetailsService = userDetailsService;
+    }
+
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http)
         throws Exception{
@@ -22,12 +33,19 @@ public class SecurityConfig {
             http.authorizeHttpRequests(authorize -> 
                 authorize
                     .requestMatchers("/").permitAll()
+                    .requestMatchers("/login").permitAll()
                     .requestMatchers("/js/**").permitAll()
                     .requestMatchers("/css/**").permitAll()
                     .requestMatchers("/img/**").permitAll()
                     .anyRequest().authenticated()
-            );
-            http.formLogin(form -> form
+            )
+            .userDetailsService(userDetailsService)
+            .formLogin(login -> login
+                .loginPage("/login")
+                .loginProcessingUrl("/login")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .failureHandler(failureHandler)
                 .defaultSuccessUrl("/top")
             );
             
