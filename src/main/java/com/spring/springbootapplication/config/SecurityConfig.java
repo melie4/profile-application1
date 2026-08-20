@@ -37,6 +37,7 @@ public class SecurityConfig {
                     .requestMatchers("/js/**").permitAll()
                     .requestMatchers("/css/**").permitAll()
                     .requestMatchers("/img/**").permitAll()
+                    .requestMatchers("/profile-images/**").permitAll()
                     .anyRequest().authenticated()
             )
             .userDetailsService(userDetailsService)
@@ -46,7 +47,7 @@ public class SecurityConfig {
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .failureHandler(failureHandler)
-                .defaultSuccessUrl("/top")
+                .defaultSuccessUrl("/top",true)
             )
             .logout(logout -> logout
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))

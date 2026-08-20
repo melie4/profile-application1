@@ -23,7 +23,46 @@
         </div>
     </header>
 
-    <h2>Top画面</h2>
+    <div class = "main">
+        <div class = "container">
+            <div class = "profile">
+                <div class = "avatar-images">
+                    <img th:if = "${user.avatarImage != null}"
+                        th:src="@{/profile-images/{fileName}(fileName = ${user.avatarImage})}"
+                        class = "avatar-image">
+                    
+                    <div th:unless = "${user.avatarImage != null}"
+                        class = "avatar-image-default">
+                    </div>
+
+                    <p class = "avatar-name" th:text = "${user.name}"></p>
+                </div>
+
+                <div class = "self-introduction">
+                    <h2>自己紹介</h2>
+
+                    <div th:if = "${user.selfIntroduction != null}" th:text = "${user.selfIntroduction}" class = "message"></div>
+                    <div th:unless = "${user.selfIntroduction != null}"  class = "message-default"></div>
+
+                    <a th:href="@{/profile-edit}" class = "btn introduction-edit-btn">自己紹介を編集する</a>
+
+                </div>
+                
+            </div>
+        </div>
+
+
+        <div class = "chart-info">
+            <div class = "container">
+                <div class = "chart-header">
+                    <h2>学習チャート</h2>
+
+                    <a th:href= "@{/skill-edit}" class = "btn skill-edit-btn">編集する</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <footer>
         <div class = "container">

@@ -27,14 +27,14 @@ li{
     color:white;
     background-color:#1B5678;
     display:block;
-    /*height:53px;
-    width:232px;*/
-    padding:16px 80px;
     border-radius:4px;
     font-size:18px;
     margin:auto;
     line-height:53px;
     text-align:center;
+    border: none;
+    text-decoration: none;
+    padding:0;
 }
 
 .btn:hover{
@@ -87,6 +87,122 @@ header h2{
 .logout-btn:hover {
     cursor: pointer;
 }
+
+/*main*/
+.main{
+    height:742px;
+    padding-top:80px;
+}
+
+.profile{
+    width:960px;
+    display:flex;
+    align-items: center;
+    gap:80px;
+    margin:auto;
+    position:relative;
+}
+
+
+.avatar-image,
+.avatar-image-default{
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    margin-top: 0;
+}
+
+
+.avatar-image{
+    display:block;
+    object-fit: cover;
+}
+
+.avatar-image-default{
+    display:block;
+    background-color: #d9d9d9;
+}
+
+.self-introduction{
+    display: block;
+    position: absolute;
+    top:52px;
+    left:440px;
+}
+
+.self-introduction h2{
+    font-size: 36px;
+    width:240px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #00000080;
+    margin-bottom:32px;
+    margin-top:0;
+    text-align:left;
+}
+
+
+.self-introduction .message{
+    width:520px;
+    margin-bottom: 32px;
+}
+
+.self-introduction .message-default{
+    height:81px;
+    width:520px;
+    margin-bottom: 32px;
+}
+
+.introduction-edit-btn{
+    height:53px;
+    width:242px;
+    line-height:53px;
+    text-align:center;
+    margin-left:0;
+    margin-right:auto;
+}
+
+.avatar-name{
+
+    width: 360px;
+    height: 57px;
+    line-height: 57px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom:0;
+    font-size: 20px;
+
+}
+
+.chart-info {
+    padding-top: 53px;
+}
+
+
+.chart-header{
+    display:block;
+    height:151px;
+    width:400px;
+    margin:auto;
+}
+
+.chart-header h2{
+    font-size: 36px;
+    line-height: 36px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #00000080;
+    margin:0 0 44px 0;
+    text-align:center;
+}
+
+.skill-edit-btn{
+    height:53px;
+    width:152px;
+    line-height:53px;
+    text-align:center;
+    margin-bottom: 31px;
+}
+
+
 
 
 /*footer*/
