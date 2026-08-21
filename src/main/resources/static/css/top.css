@@ -90,7 +90,7 @@ header h2{
 
 /*main*/
 .main{
-    height:742px;
+    /*height:742px;*/
     padding-top:80px;
 }
 
@@ -176,6 +176,7 @@ header h2{
 
 .chart-info {
     padding-top: 53px;
+    padding-bottom:31px;
 }
 
 
@@ -200,7 +201,6 @@ header h2{
     width:152px;
     line-height:53px;
     text-align:center;
-    margin-bottom: 31px;
 }
 
 
