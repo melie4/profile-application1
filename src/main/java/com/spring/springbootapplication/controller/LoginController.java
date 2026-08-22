@@ -20,12 +20,4 @@ public class LoginController {
        return mav;
     }
     
-    @RequestMapping("/top")
-    public ModelAndView index(ModelAndView mav, HttpServletRequest request) {
-        mav.setViewName("topLoggedIn");
-        String userName = request.getRemoteUser();
-        mav.addObject("userName", userName + "  portfolio site");
-
-        return mav;
-    }
 }
