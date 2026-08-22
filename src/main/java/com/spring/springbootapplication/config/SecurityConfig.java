@@ -47,7 +47,14 @@ public class SecurityConfig {
                 .passwordParameter("password")
                 .failureHandler(failureHandler)
                 .defaultSuccessUrl("/top")
+            )
+            .logout(logout -> logout
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutUrl("/logout")
+                .invalidateHttpSession(true)
+                .logoutSuccessUrl("/login")
             );
+        
             
             
             return http.build();
