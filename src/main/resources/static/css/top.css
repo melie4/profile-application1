@@ -144,6 +144,7 @@ header h2{
 
 .self-introduction .message{
     width:520px;
+    font-size:18px;
     margin-bottom: 32px;
     overflow-wrap: break-word;
 }
