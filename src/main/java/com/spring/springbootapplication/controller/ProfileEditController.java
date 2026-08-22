@@ -37,7 +37,7 @@ public class ProfileEditController {
         @AuthenticationPrincipal LoginUserDetails loginUser,
         ModelAndView mav,
         HttpServletRequest request){
-            mav.setViewName("/profile-edit");
+            mav.setViewName("profile-edit");
             
             //DBに登録済みの自己紹介文を取得する
             User loginUserInfo = loginUser.getUser();
