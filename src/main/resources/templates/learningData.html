@@ -1,0 +1,259 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th = "http://www.thymeleaf.org">
+
+<head>
+    <title>学習項目一覧</title>
+    <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8"/>
+    <link th:href="@{/css/learningData.css}" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class = "container">
+            <div class = "header-left">
+                <a th:href="@{/top}" class = "header-title">My Portfolio</a>
+            </div>
+            <div class = "header-right">
+                <form method = "post" th:action = "@{/logout}">
+                    <input type="submit" class = "logout-btn" value = "ログアウト" />
+                </form>
+            </div>
+            
+        </div>
+    </header>
+
+
+    <div class = "main">
+        <div class = "container">
+            <div class = "learning-area">
+                <div class = "month-select-area">
+                    <form th:action="@{/learningData}" method = "get" class = "month-form">
+
+                        <select class = "month-select" name = "month" onchange = "this.form.submit()">
+                            <option th:each = "m : ${months}"
+                                    th:value="${m}"
+                                    th:text = "${m.monthValue + '月'}"
+                                    th:selected = "${m.equals(selectedMonth)}">
+                            </option>
+                        </select>
+                    </form>
+                </div>
+
+                <!--バックエンド-->
+                <div class = "category-box">
+                    <div class = "category-header">
+                        <h2>バックエンド</h2>
+
+                        <a th:href="@{/learning-data-add}" class="btn add-data-btn">項目を追加する</a>
+                    </div>
+
+                    <div th:if = "${#lists.isEmpty(learningDataList)}"
+                        class = "no-learningData">
+                        学習データがありません
+                    </div>
+
+                    <div class = "table-scroll">
+                        <table class = "learning-table">
+                            <thead>
+                                <tr>
+                                    <th>項目名</th>
+                                    <th>学習時間</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr th:each = "data : ${learningDataList}"
+                                    th:if = "${data.category.id == 1}">
+
+                                    <td th:text = "${data.skillName}"></td>
+                                    <td>
+                                        <form class = "learning-time-form" th:action="@{/learningData-update}" method = "post">
+                                            <input type = "hidden"
+                                                name = "learningDataId"
+                                                th:value = "${data.id}">
+                                            
+                                            <input type = "hidden"
+                                                name = "month"
+                                                th:value = "${selectedMonth}">
+
+                                            <input type = "number"
+                                                name = "learningTime"
+                                                th:value = "${data.learningTime}"
+                                                class = "learning-time-input">
+
+                                            <button type = "submit" class = "btn save-learningTime-btn">学習時間を保存する</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form class = "delete-form" method = "post" th:action="@{learningData-delete}">
+                                            <input type="hidden"
+                                                name = "learningDataId"
+                                                th:value = "${data.id}">
+
+                                            <input type="hidden"
+                                                name = "month"
+                                                th:value = "${selectedMonth}">
+
+                                            <button type = "submit" class = "btn delete-btn">削除する</button>
+
+                                            
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <!--フロントエンド-->
+                <div class = "category-box">
+                    <div class = "category-header">
+                        <h2>フロントエンド</h2>
+
+                        <a th:href="@{/learning-data-add}" class="btn add-data-btn">項目を追加する</a>
+                    </div>
+
+                    <div th:if = "${#lists.isEmpty(learningDataList)}"
+                        class = "no-learningData">
+                        学習データがありません
+                    </div>
+
+                    <div class = "table-scroll">
+                        <table class = "learning-table">
+                            <thead>
+                                <tr>
+                                    <th>項目名</th>
+                                    <th>学習時間</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr th:each = "data : ${learningDataList}"
+                                    th:if = "${data.category.id == 2}">
+
+                                    <td th:text = "${data.skillName}"></td>
+                                    <td>
+                                        <form class = "learning-time-form" th:action="@{/learningData-update}" method = "post">
+                                            <input type = "hidden"
+                                                name = "learningDataId"
+                                                th:value = "${data.id}">
+                                            
+                                            <input type = "hidden"
+                                                name = "month"
+                                                th:value = "${selectedMonth}">
+
+                                            <input type = "number"
+                                                name = "learningTime"
+                                                th:value = "${data.learningTime}"
+                                                class = "learning-time-input">
+
+                                            <button type = "submit" class = "btn save-learningTime-btn">学習時間を保存する</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form class = "delete-form" method = "post" th:action="@{learningData-delete}">
+                                            <input type="hidden"
+                                                name = "learningDataId"
+                                                th:value = "${data.id}">
+
+                                            <input type="hidden"
+                                                name = "month"
+                                                th:value = "${selectedMonth}">
+
+                                            <button type = "submit" class = "btn delete-btn">削除する</button>
+
+                                            
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <!--インフラ-->
+                <div class = "category-box">
+                    <div class = "category-header">
+                        <h2>インフラ</h2>
+
+                        <a th:href="@{/learning-data-add}" class="btn add-data-btn">項目を追加する</a>
+                    </div>
+
+                    <div th:if = "${#lists.isEmpty(learningDataList)}"
+                        class = "no-learningData">
+                        学習データがありません
+                    </div>
+
+                    <div class = "table-scroll">
+                        <table class = "learning-table">
+                            <thead>
+                                <tr>
+                                    <th>項目名</th>
+                                    <th>学習時間</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr th:each = "data : ${learningDataList}"
+                                    th:if = "${data.category.id == 3}">
+
+                                    <td th:text = "${data.skillName}"></td>
+                                    <td>
+                                        <form class = "learning-time-form" th:action="@{/learningData-update}" method = "post">
+                                            <input type = "hidden"
+                                                name = "learningDataId"
+                                                th:value = "${data.id}">
+                                            
+                                            <input type = "hidden"
+                                                name = "month"
+                                                th:value = "${selectedMonth}">
+
+                                            <input type = "number"
+                                                name = "learningTime"
+                                                th:value = "${data.learningTime}"
+                                                class = "learning-time-input">
+
+                                            <button type = "submit" class = "btn save-learningTime-btn">学習時間を保存する</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form class = "delete-form" method = "post" th:action="@{learningData-delete}">
+                                            <input type="hidden"
+                                                name = "learningDataId"
+                                                th:value = "${data.id}">
+
+                                            <input type="hidden"
+                                                name = "month"
+                                                th:value = "${selectedMonth}">
+
+                                            <button type = "submit" class = "btn delete-btn">削除する</button>
+
+                                            
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class = "container">
+            <p th:text = "${userName}">portfolio site</p>
+        </div>
+    </footer>
+
+</body>
+
+

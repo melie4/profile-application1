@@ -54,13 +54,14 @@ header{
     text-align:center;
 }
 
-header h2{
+header .header-title{
     color:#FFFFFF;
     font-weight:bold;
     font-size:36px;
     height:42px;
     margin:39px 40px;
-
+    text-decoration: none;
+    display:block;
 }
 
 .header-left{
