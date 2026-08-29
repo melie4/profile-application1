@@ -6,7 +6,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Size;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDateTime;
@@ -32,7 +31,6 @@ public class User {
 
 
     @Column(name = "self_introduction")
-    @Size(min = 50, max = 200)
     private String selfIntroduction;
 
     @Column(name = "avatar_image")

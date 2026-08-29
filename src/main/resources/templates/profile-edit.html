@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th = "http://www.thymeleaf.org">
+
+<head>
+    <title>自己紹介編集</title>
+    <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8"/>
+    <link th:href="@{/css/profileEdit.css}" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class = "container">
+            <div class = "header-left">
+                <h2>My Portfolio</h2>
+            </div>
+            <div class = "header-right">
+                <form method = "post" th:action = "@{/logout}">
+                    <input type="submit" class = "logout-btn" value = "ログアウト" />
+                </form>
+            </div>
+            
+        </div>
+    </header>
+
+
+    <div class = "profile-edit-main">
+
+        <div class = "container">
+            <div class = "title">自己紹介を編集する</div>
+            <form method = "post" th:action="@{/profile-edit}" th:object = "${userModel}" enctype = "multipart/form-data">
+            <input type="hidden"
+                   th:name="${_csrf.parameterName}"
+                   th:value="${_csrf.token}">
+                
+                <div class = "form-all">
+
+                    <div class = "form">
+                        <label for="selfIntroduction" class = "form-label">自己紹介文</label>
+                        <textarea class = "form-control" th:field = "*{selfIntroduction}"></textarea>
+                        <div class = "err" th:if = "${#fields.hasErrors('selfIntroduction')}" th:errors = "*{selfIntroduction}"></div>
+                    </div>
+
+                    <div class = "form">
+                        <label class = "form-label avatar-label">アバター画像</label>
+
+                        <label for="avatarImage" class = "image-select-btn">画像ファイルを添付する</label>
+                        <span id = "fileName"></span>
+
+                        <input type="file" name = "avatarImage" id="avatarImage" accept = "image/*">
+                        
+                    </div>
+                    
+
+                </div>
+
+
+                <button type="submit" class = "btn btn-profile-edit">自己紹介を確定する</button>
+
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class = "container">
+            <p th:text = "${userName}">portfolio site</p>
+        </div>
+    </footer>
+
+    <script>
+        const avatarImage = document.getElementById("avatarImage");
+        const fileName = document.getElementById("fileName");
+
+        avatarImage.addEventListener("change",function(){
+            if(avatarImage.files.length > 0){
+                fileName.textContent = avatarImage.files[0].name;
+            }
+            else{
+                fileName.textContent = "";
+            }
+        })
+    </script>
+</body>
