@@ -172,19 +172,22 @@ header .header-title{
     padding:40px;
 
     background-color: #FFFFFF;
-    text-align:center;
 
     box-shadow: 0px 4px 4px 0px #00000040;
+
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
 
 }
 
 .data-add-modal p{
     width:251px;
-    height:52px;
     font-size: 18px;
     font-weight:bold;
     color:#000000BF;
-    display:flex;
+    text-align: center;
     margin:0 auto 40px auto;
     overflow-wrap: break-word;
 }
@@ -192,6 +195,7 @@ header .header-title{
 .back-to-learningDataPage-btn{
     width:192px;
     height:48px;
+    margin:0 auto;
     text-decoration: none;
 }
 

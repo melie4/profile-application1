@@ -61,7 +61,7 @@
 
         <div th:if = "${isSuccess}" class = "modal">
             <div class = "data-add-modal">
-            <p th:text = "${addCategoryName} + 'に' + ${addSkillName} + 'を' + ${addLearningTime} + '分で追加しました！'"></p>
+                <p th:text = "${addCategoryName} + 'に' + ${addSkillName} + 'を' + ${addLearningTime} + '分で追加しました！'"></p>
 
                 <a th:href="@{/learningData(month = ${selectedMonth})}" class = "btn back-to-learningDataPage-btn">編集ページに戻る</a>
             </div>
