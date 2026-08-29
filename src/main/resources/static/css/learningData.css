@@ -220,7 +220,7 @@ header .header-title{
 
 .learning-table td:nth-child(3){
     width:200px;
-    padding:16px 40px;
+    padding:16px 40px 16px 72px;
 }
 
 .learning-table thead th{
