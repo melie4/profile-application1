@@ -37,8 +37,7 @@ public class LearningData {
     @JoinColumn(name = "category_id")
     private Categories category;
 
-    @Size(max = 255)
-    @Column(name = "skill_name")
+    @Column(name = "skill_name", unique = true)
     private String skillName;
 
     @Column(name = "learning_time")

@@ -206,6 +206,21 @@ header .header-title{
     padding:16px 40px;
 }
 
+.learning-table td:nth-child(1){
+    width:240px;
+    padding:16px 16px 16px 40px;
+}
+
+.learning-table td:nth-child(2){
+    width:440px;
+    padding:16px;
+}
+
+.learning-table td:nth-child(3){
+    width:200px;
+    padding:16px 40px;
+}
+
 .learning-table thead th{
     position:sticky;
     top:0;
@@ -213,7 +228,7 @@ header .header-title{
     height:57px;
     font-weight:normal;
     text-align:left;
-    padding:auto 16px auto 40px;
+    background-color: #FFFFFF;
 }
 
 .learning-table td{
@@ -221,13 +236,14 @@ header .header-title{
     font-size:14px;
     line-height: 20px;
     color:#000000DE;
+    border-top:1px solid #DDDDDD;
     
 }
 
 .learning-time-form{
     display:flex;
     align-items:center;
-    gap:58px;
+    justify-content: space-between;
 
 }
 
@@ -237,6 +253,7 @@ header .header-title{
     font-size:14px;
     border:1px solid #0000003B;
     border-radius: 4px;
+    padding-left:12px;
 }
 
 .save-learningTime-btn{
@@ -245,9 +262,18 @@ header .header-title{
     line-height: 32px;
     text-align: center;
     color:#1B5678;
+    background-color:#FFFFFF ;
     font-size: 14px;
     border:1px solid #1B5678;
     border-radius: 4px;
+
+    transition: none;
+    appearance: none;
+   -webkit-appearance: none;
+}
+
+.save-learningTime-btn:hover{
+    cursor: pointer;
 }
 
 .delete-form{
@@ -260,7 +286,14 @@ header .header-title{
     height:32px;
     color:#FFFFFF;
     background-color:#EE6969;
+    font-size:14px;
     border-radius: 4px;
+    line-height: 32px;
+    text-align: center;
+
+    transition: none;
+    appearance: none;
+   -webkit-appearance: none;
 
 }
 
