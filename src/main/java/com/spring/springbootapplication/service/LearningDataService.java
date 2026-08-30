@@ -52,4 +52,18 @@ public class LearningDataService {
         return repository.saveAndFlush(learningData);
 
     }
+
+    //学習データ削除
+    public LearningData deleteLearningData(
+            User user,
+            Integer learningDataId)
+    {
+        LearningData learningData = 
+            repository.findByIdAndUser(learningDataId,user)
+                      .orElseThrow();
+
+        repository.delete(learningData);
+        return learningData;
+    }
+
 }
