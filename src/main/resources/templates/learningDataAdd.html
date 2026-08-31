@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th = "http://www.thymeleaf.org">
+
+<head>
+    <title>学習項目追加</title>
+    <meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8"/>
+    <link th:href="@{/css/learningDataAdd.css}" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class = "container">
+            <div class = "header-left">
+                <a th:href="@{/top}" class = "header-title">My Portfolio</a>
+            </div>
+            <div class = "header-right">
+                <form method = "post" th:action = "@{/logout}">
+                    <input type="submit" class = "logout-btn" value = "ログアウト" />
+                </form>
+            </div>
+            
+        </div>
+    </header>
+
+    <div class = "learning-data-add-main">
+        <div class = "container">
+            <div class = "title" th:text = "${learningDataModel.category.categoryName} + 'に項目を追加'"></div>
+
+            <form method = "post" th:action="@{/learning-data-add}" th:object = "${learningDataModel}">
+            <input type="hidden"
+                   th:name="${_csrf.parameterName}"
+                   th:value="${_csrf.token}">
+            
+                <div class = "form-all">
+                    <input type="hidden" th:field = "*{category.Id}">
+
+                    <input type="hidden" th:field = "*{targetMonth}">
+
+                    <div class = "form">
+                        <label for="skillName" class = "form-label">項目名</label>
+                        <input type = "text" class = "form-control" th:field = "*{skillName}">
+                        <div class = "err" th:if = "${#fields.hasErrors('skillName')}" th:errors = "*{skillName}"></div>
+                        <div class = "err" th:if = "${errorMessage}" th:text = "${errorMessage}"></div>
+                    </div>
+
+                    <div class = "form">
+                        <label for="learningTime" class = "form-label">学習時間</label>
+                        <input type = "number" class = "form-control" th:field = "*{learningTime}">
+                        <div class = "help-massage">
+                            <p>分単位で入力してください</p>
+                        </div>
+                        <div class = "err" th:if = "${#fields.hasErrors('learningTime')}" th:errors = "*{learningTime}"></div>
+                    </div>
+
+                </div>
+                
+                <button type = "submit" class = "btn learning-data-add-btn">追加する</button>
+            </form>
+        </div>
+
+        <div th:if = "${isSuccess}" class = "modal">
+            <div class = "data-add-modal">
+            <p th:text = "${addCategoryName} + 'に' + ${addSkillName} + 'を' + ${addLearningTime} + '分で追加しました！'"></p>
+
+                <a th:href="@{/learningData(month = ${selectedMonth})}" class = "btn back-to-learningDataPage-btn">編集ページに戻る</a>
+            </div>
+        </div>
+
+    </div>
+
+
+    <footer>
+        <div class = "container">
+            <p th:text = "${userName}">portfolio site</p>
+        </div>
+    </footer>
+
+</body>    

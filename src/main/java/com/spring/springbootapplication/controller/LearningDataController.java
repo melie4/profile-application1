@@ -62,12 +62,26 @@ public class LearningDataController {
         List<LearningData> learningDataList = 
             learningDataService.getLearningData(user, selectedMonth);
 
+        boolean hasBackendData = learningDataList.stream()
+                    .anyMatch(data -> data.getCategory().getId() == 1);
+
+        boolean hasFrontendData = learningDataList.stream()
+                    .anyMatch(data -> data.getCategory().getId() == 2);            
+
+        boolean hasInfraData = learningDataList.stream()
+                    .anyMatch(data -> data.getCategory().getId() == 3); 
 
         mav.setViewName("learningData");
         mav.addObject("user",user);
         mav.addObject("months",months);
         mav.addObject("selectedMonth", selectedMonth);
         mav.addObject("learningDataList",learningDataList);
+        mav.addObject("hasBackendData",hasBackendData);
+        mav.addObject("hasFrontendData",hasFrontendData);
+        mav.addObject("hasInfraData",hasInfraData);
+
+        
+
 
         String userName = request.getRemoteUser();
         mav.addObject("userName", userName + "  portfolio site");

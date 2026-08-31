@@ -45,10 +45,10 @@
                     <div class = "category-header">
                         <h2>バックエンド</h2>
 
-                        <a th:href="@{/learning-data-add}" class="btn add-data-btn">項目を追加する</a>
+                        <a th:href="@{/learning-data-add(month = ${selectedMonth},categoryId = 1)}" class="btn add-data-btn">項目を追加する</a>
                     </div>
 
-                    <div th:if = "${#lists.isEmpty(learningDataList)}"
+                    <div th:if = "${!hasBackendData}"
                         class = "no-learningData">
                         学習データがありません
                     </div>
@@ -83,7 +83,7 @@
                                                 th:value = "${data.learningTime}"
                                                 class = "learning-time-input">
 
-                                            <button type = "submit" class = "btn save-learningTime-btn">学習時間を保存する</button>
+                                            <button type = "submit" class = "save-learningTime-btn">学習時間を保存する</button>
                                         </form>
                                     </td>
                                     <td>
@@ -113,10 +113,10 @@
                     <div class = "category-header">
                         <h2>フロントエンド</h2>
 
-                        <a th:href="@{/learning-data-add}" class="btn add-data-btn">項目を追加する</a>
+                        <a th:href="@{/learning-data-add(month = ${selectedMonth},categoryId = 2)}" class="btn add-data-btn">項目を追加する</a>
                     </div>
 
-                    <div th:if = "${#lists.isEmpty(learningDataList)}"
+                    <div th:if = "${!hasFrontendData}"
                         class = "no-learningData">
                         学習データがありません
                     </div>
@@ -151,7 +151,7 @@
                                                 th:value = "${data.learningTime}"
                                                 class = "learning-time-input">
 
-                                            <button type = "submit" class = "btn save-learningTime-btn">学習時間を保存する</button>
+                                            <button type = "submit" class = "save-learningTime-btn">学習時間を保存する</button>
                                         </form>
                                     </td>
                                     <td>
@@ -181,10 +181,10 @@
                     <div class = "category-header">
                         <h2>インフラ</h2>
 
-                        <a th:href="@{/learning-data-add}" class="btn add-data-btn">項目を追加する</a>
+                        <a th:href="@{/learning-data-add(month = ${selectedMonth},categoryId = 3)}" class="btn add-data-btn">項目を追加する</a>
                     </div>
 
-                    <div th:if = "${#lists.isEmpty(learningDataList)}"
+                    <div th:if = "${!hasInfraData}"
                         class = "no-learningData">
                         学習データがありません
                     </div>
@@ -219,7 +219,7 @@
                                                 th:value = "${data.learningTime}"
                                                 class = "learning-time-input">
 
-                                            <button type = "submit" class = "btn save-learningTime-btn">学習時間を保存する</button>
+                                            <button type = "submit" class = "save-learningTime-btn">学習時間を保存する</button>
                                         </form>
                                     </td>
                                     <td>
