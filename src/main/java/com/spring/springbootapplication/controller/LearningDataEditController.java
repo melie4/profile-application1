@@ -28,6 +28,22 @@ public class LearningDataEditController {
         @AuthenticationPrincipal LoginUserDetails loginUser,
         RedirectAttributes redirectAttributes)
     {
+        if(learningTime < 0)
+        {
+            redirectAttributes.addFlashAttribute(
+                "learningTimeError",
+                "学習時間は0以上で入力してください"
+            );
+
+            redirectAttributes.addFlashAttribute(
+                "errorLearningDataId",
+                learningDataId
+            );
+
+            return new ModelAndView("redirect:/learningData?month=" + targetMonth);
+        }
+
+
        User user = loginUser.getUser();
 
         LearningData learningData = 

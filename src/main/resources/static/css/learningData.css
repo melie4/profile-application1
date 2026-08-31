@@ -234,7 +234,6 @@ header .header-title{
 }
 
 .learning-table td{
-    height:73px;
     font-size:14px;
     line-height: 20px;
     color:#000000DE;
@@ -247,6 +246,16 @@ header .header-title{
     align-items:center;
     justify-content: space-between;
 
+}
+
+.learning-time-input-area{
+    display:flex;
+    flex-direction: column;
+}
+
+.learning-time-input-area .err{
+    font-size: 12px;
+    margin:4px 0 0 0;
 }
 
 .learning-time-input{
@@ -338,7 +347,7 @@ header .header-title{
     color:#000000BF;
     text-align: center;
     margin:0 auto 40px auto;
-    overflow-wrap: break-word;
+    overflow-wrap: anywhere;
 }
 
 .back-to-learningDataPage-btn{
