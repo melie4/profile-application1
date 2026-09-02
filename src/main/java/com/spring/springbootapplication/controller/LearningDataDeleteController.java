@@ -16,44 +16,28 @@ import com.spring.springbootapplication.service.LearningDataService;
 import com.spring.springbootapplication.entity.LearningData;
 
 @Controller
-public class LearningDataEditController {
+public class LearningDataDeleteController {
     @Autowired
     LearningDataService learningDataService;
 
-    @RequestMapping(value = "/learningData-update", method = RequestMethod.POST)
+    @RequestMapping(value = "/learningData-delete", method = RequestMethod.POST)
     public ModelAndView form(
         @RequestParam Integer learningDataId,
-        @RequestParam Integer learningTime,
         @RequestParam YearMonth targetMonth,
         @AuthenticationPrincipal LoginUserDetails loginUser,
         RedirectAttributes redirectAttributes)
     {
-        if(learningTime < 0)
-        {
-            redirectAttributes.addFlashAttribute(
-                "learningTimeError",
-                "学習時間は0以上で入力してください"
-            );
-
-            redirectAttributes.addFlashAttribute(
-                "errorLearningDataId",
-                learningDataId
-            );
-
-            return new ModelAndView("redirect:/learningData?month=" + targetMonth);
-        }
-
-
        User user = loginUser.getUser();
 
         LearningData learningData = 
-            learningDataService.updateLearningData(user,learningDataId,learningTime);
+            learningDataService.deleteLearningData(user,learningDataId);
 
-        redirectAttributes.addFlashAttribute("isUpdateSuccess",true);
-        redirectAttributes.addFlashAttribute("updateSkillName",learningData.getSkillName());
+        redirectAttributes.addFlashAttribute("isDeleteSuccess",true);
+        redirectAttributes.addFlashAttribute("deleteSkillName",learningData.getSkillName());
 
         return new ModelAndView("redirect:/learningData?month=" + targetMonth);
 
 
     }
 }
+

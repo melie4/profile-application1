@@ -78,16 +78,23 @@
                                                 name = "targetMonth"
                                                 th:value = "${selectedMonth}">
 
-                                            <input type = "number"
-                                                name = "learningTime"
-                                                th:value = "${data.learningTime}"
-                                                class = "learning-time-input">
+                                            <div class = "learning-time-input-area">
+                                                <input type = "number"
+                                                    name = "learningTime"
+                                                    th:value = "${data.learningTime}"
+                                                    class = "learning-time-input">
+
+                                                <p th:if = "${learningTimeError != null and errorLearningDataId == data.id}"
+                                                   th:text = "${learningTimeError}"
+                                                   class = "err">
+                                                </p>
+                                            </div>
 
                                             <button type = "submit" class = "save-learningTime-btn">学習時間を保存する</button>
                                         </form>
                                     </td>
                                     <td>
-                                        <form class = "delete-form" method = "post" th:action="@{learningData-delete}">
+                                        <form class = "delete-form" method = "post" th:action="@{/learningData-delete}">
                                             <input type="hidden"
                                                 name = "learningDataId"
                                                 th:value = "${data.id}">
@@ -146,16 +153,23 @@
                                                 name = "targetMonth"
                                                 th:value = "${selectedMonth}">
 
-                                            <input type = "number"
-                                                name = "learningTime"
-                                                th:value = "${data.learningTime}"
-                                                class = "learning-time-input">
+                                            <div class = "learning-time-input-area">
+                                                <input type = "number"
+                                                    name = "learningTime"
+                                                    th:value = "${data.learningTime}"
+                                                    class = "learning-time-input">
+                                                
+                                                <p th:if = "${learningTimeError != null and errorLearningDataId == data.id}"
+                                                   th:text = "${learningTimeError}"
+                                                   class = "err">
+                                                </p>
+                                            </div>
 
                                             <button type = "submit" class = "save-learningTime-btn">学習時間を保存する</button>
                                         </form>
                                     </td>
                                     <td>
-                                        <form class = "delete-form" method = "post" th:action="@{learningData-delete}">
+                                        <form class = "delete-form" method = "post" th:action="@{/learningData-delete}">
                                             <input type="hidden"
                                                 name = "learningDataId"
                                                 th:value = "${data.id}">
@@ -214,16 +228,23 @@
                                                 name = "targetMonth"
                                                 th:value = "${selectedMonth}">
 
-                                            <input type = "number"
-                                                name = "learningTime"
-                                                th:value = "${data.learningTime}"
-                                                class = "learning-time-input">
+                                            <div class = "learning-time-input-area">
+                                                <input type = "number"
+                                                    name = "learningTime"
+                                                    th:value = "${data.learningTime}"
+                                                    class = "learning-time-input">
+                                                
+                                                <p th:if = "${learningTimeError != null and errorLearningDataId == data.id}"
+                                                   th:text = "${learningTimeError}"
+                                                   class = "err">
+                                                </p>
+                                            </div>
 
                                             <button type = "submit" class = "save-learningTime-btn">学習時間を保存する</button>
                                         </form>
                                     </td>
                                     <td>
-                                        <form class = "delete-form" method = "post" th:action="@{learningData-delete}">
+                                        <form class = "delete-form" method = "post" th:action="@{/learningData-delete}">
                                             <input type="hidden"
                                                 name = "learningDataId"
                                                 th:value = "${data.id}">
@@ -251,6 +272,16 @@
 
             <div class = "data-add-modal">
                 <p th:text = "${updateSkillName} + 'の学習時間を保存しました！'"></p>
+
+                <a th:href="@{/learningData(month = ${selectedMonth})}" class = "btn back-to-learningDataPage-btn">編集ページに戻る</a>
+            </div>
+            
+        </div>
+
+        <div th:if = "${isDeleteSuccess}" class = "modal">
+
+            <div class = "data-add-modal">
+                <p th:text = "${deleteSkillName} + 'を削除しました！'"></p>
 
                 <a th:href="@{/learningData(month = ${selectedMonth})}" class = "btn back-to-learningDataPage-btn">編集ページに戻る</a>
             </div>
