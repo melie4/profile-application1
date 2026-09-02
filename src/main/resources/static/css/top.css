@@ -2,9 +2,20 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    min-height: 100%;
+}
+
+
 body {
     margin: 0;
     font-family: "Roboto";
+
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
 }
 
 li{
@@ -43,11 +54,14 @@ li{
 
 /*header*/
 header{
-    /*display: flex;*/
     width:100%;
     height:120px;
     background-color:#1B5678;
-    text-align:center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 40px;
 }
 
 header h2{
@@ -55,13 +69,10 @@ header h2{
     font-weight:bold;
     font-size:36px;
     height:42px;
-    margin:39px 40px;
+    margin:0;
 
 }
 
-.header-left{
-    float:left;
-}
 
 .logout-btn{
     color:#000000BF;
@@ -69,9 +80,8 @@ header h2{
     font-size:18px;
     height:53px;
     width:170px;
-    float:right;
     border-radius:4px;
-    margin:34px 40px 33px 40px;
+    margin:0;
     
     /*以下でbtn内の文字を中央に*/
     line-height:53px;
@@ -90,6 +100,7 @@ header h2{
 
 /*main*/
 .main{
+    flex:1;
     padding-top:80px;
     padding-bottom:81.5px;
 }
