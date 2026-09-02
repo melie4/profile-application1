@@ -90,8 +90,8 @@ header h2{
 
 /*main*/
 .main{
-    /*height:742px;*/
     padding-top:80px;
+    padding-bottom:81.5px;
 }
 
 .profile{
@@ -203,6 +203,15 @@ header h2{
     line-height:53px;
     text-align:center;
 }
+
+.chart-graph{
+    width: 1081px;
+    height:532.5px;
+    display: block;
+    margin:0 auto;
+    padding:20px;
+}
+
 
 
 

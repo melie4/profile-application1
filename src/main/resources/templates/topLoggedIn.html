@@ -61,7 +61,91 @@
                 </div>
             </div>
         </div>
+
+        <div class = "chart-graph">
+            <div class = "chart-graph-area">
+                <canvas id = "learningChart"></canvas>
+                <script src = "https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <script th:inline = "javascript">
+                    const ctx = document.getElementById("learningChart");
+
+                    new Chart(ctx,{
+                        type:"bar",
+
+                        data:{
+                            labels:["先々月","先月","今月"],
+                            datasets:[
+                                {
+                                    label:"バックエンド",
+                                    data:[
+                                        [[${twoMonthsAgoBackend}]],
+                                        [[${lastMonthBackend}]],
+                                        [[${currentMonthBackend}]]
+                                    ],
+                                    backgroundColor: "rgba(245, 169, 184, 0.7)",
+                                },
+                                {
+                                label:"フロントエンド",
+                                    data:[
+                                        [[${twoMonthsAgoFrontend}]],
+                                        [[${lastMonthFrontend}]],
+                                        [[${currentMonthFrontend}]]
+                                    ],
+                                    backgroundColor:"rgba(246, 194, 139, 0.7)",
+                                },
+                                {
+                                    label:"インフラ",
+                                    data:[
+                                        [[${twoMonthsAgoInfra}]],
+                                        [[${lastMonthInfra}]],
+                                        [[${currentMonthInfra}]]
+                                    ],
+                                    backgroundColor: "rgba(248, 223, 161, 0.7)",
+                                }
+                                
+                            ]
+                        },
+
+                        options:{
+                            scales:{
+                                x: {
+                                    ticks: {
+                                        font: {
+                                            weight: "bold"
+                                        }
+                                    }
+                                },
+                                y:{
+                                    beginAtZero:true,
+                                    suggestedMax:100,
+
+                                    ticks:{
+                                        stepSize:10
+                                    }
+                                }
+                            },
+
+                            plugins:{
+                                title:{
+                                    display:true,
+                                    text:"Chart.js Bar Chart",
+                                    font:{
+                                        weight:"bold"
+                                    },
+                                    padding: {
+                                        top: 0
+                                    }
+
+                                }
+                            }
+                        }
+                    })
+                </script>
+            </div>
+        </div>
     </div>
+
+
 
 
     <footer>
