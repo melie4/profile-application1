@@ -65,7 +65,20 @@
         <div class = "chart-graph">
             <div class = "chart-graph-area">
                 <canvas id = "learningChart"></canvas>
-                <script src = "https://cdn.jsdelivr.net/npm/chart.js"></script>
+            </div>
+        </div>
+
+    </div>
+
+
+    <footer>
+        <div class = "container">
+            <p>portfolio site</p>
+        </div>
+    </footer>
+
+
+    <script src = "https://cdn.jsdelivr.net/npm/chart.js"></script>
                 <script th:inline = "javascript">
                     const ctx = document.getElementById("learningChart");
 
@@ -140,18 +153,6 @@
                             }
                         }
                     })
-                </script>
-            </div>
-        </div>
-    </div>
-
-
-
-
-    <footer>
-        <div class = "container">
-            <p th:text = "${userName}">portfolio site</p>
-        </div>
-    </footer>
+    </script>
 
 </body>    
