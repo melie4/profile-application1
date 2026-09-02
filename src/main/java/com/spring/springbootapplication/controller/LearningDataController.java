@@ -81,11 +81,6 @@ public class LearningDataController {
         mav.addObject("hasInfraData",hasInfraData);
 
         
-
-
-        String userName = request.getRemoteUser();
-        mav.addObject("userName", userName + "  portfolio site");
-
         return mav;
 
         
