@@ -28,8 +28,6 @@ public class TopPageController {
             @AuthenticationPrincipal LoginUserDetails loginUser) {
                 
         mav.setViewName("topLoggedIn");
-        String userName = request.getRemoteUser();
-        mav.addObject("userName", userName + "  portfolio site");
 
         //ログイン中のユーザーのLoginUserDetailsを渡す
         User user = loginUser.getUser();
