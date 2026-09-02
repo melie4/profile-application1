@@ -2,6 +2,7 @@ package com.spring.springbootapplication.service;
 
 import java.time.YearMonth;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,25 @@ public class LearningDataService {
         
         return repository.findByUserAndTargetMonthBetween(user, startDate, endDate);
 
+
+    }
+
+
+    //学習データ編集
+    public LearningData updateLearningData(
+            User user,
+            Integer learningDataId,
+            Integer learningTime)
+    {
+        LearningData learningData = 
+            repository.findByIdAndUser(learningDataId,user)
+                      .orElseThrow();
+
+        learningData.setLearningTime(learningTime);
+        LocalDateTime now = LocalDateTime.now();
+        learningData.setUpdateAt(now);
+
+        return repository.saveAndFlush(learningData);
 
     }
 }

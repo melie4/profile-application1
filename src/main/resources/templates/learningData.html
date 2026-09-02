@@ -75,7 +75,7 @@
                                                 th:value = "${data.id}">
                                             
                                             <input type = "hidden"
-                                                name = "month"
+                                                name = "targetMonth"
                                                 th:value = "${selectedMonth}">
 
                                             <input type = "number"
@@ -93,7 +93,7 @@
                                                 th:value = "${data.id}">
 
                                             <input type="hidden"
-                                                name = "month"
+                                                name = "targetMonth"
                                                 th:value = "${selectedMonth}">
 
                                             <button type = "submit" class = "btn delete-btn">削除する</button>
@@ -143,7 +143,7 @@
                                                 th:value = "${data.id}">
                                             
                                             <input type = "hidden"
-                                                name = "month"
+                                                name = "targetMonth"
                                                 th:value = "${selectedMonth}">
 
                                             <input type = "number"
@@ -161,7 +161,7 @@
                                                 th:value = "${data.id}">
 
                                             <input type="hidden"
-                                                name = "month"
+                                                name = "targetMonth"
                                                 th:value = "${selectedMonth}">
 
                                             <button type = "submit" class = "btn delete-btn">削除する</button>
@@ -211,7 +211,7 @@
                                                 th:value = "${data.id}">
                                             
                                             <input type = "hidden"
-                                                name = "month"
+                                                name = "targetMonth"
                                                 th:value = "${selectedMonth}">
 
                                             <input type = "number"
@@ -229,7 +229,7 @@
                                                 th:value = "${data.id}">
 
                                             <input type="hidden"
-                                                name = "month"
+                                                name = "targetMonth"
                                                 th:value = "${selectedMonth}">
 
                                             <button type = "submit" class = "btn delete-btn">削除する</button>
@@ -246,6 +246,17 @@
 
             </div>
         </div>
+
+        <div th:if = "${isUpdateSuccess}" class = "modal">
+
+            <div class = "data-add-modal">
+                <p th:text = "${updateSkillName} + 'の学習時間を保存しました！'"></p>
+
+                <a th:href="@{/learningData(month = ${selectedMonth})}" class = "btn back-to-learningDataPage-btn">編集ページに戻る</a>
+            </div>
+            
+        </div>
+
     </div>
 
     <footer>

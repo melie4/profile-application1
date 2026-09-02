@@ -2,6 +2,7 @@ package com.spring.springbootapplication.repository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,7 +19,7 @@ public interface SkillListRepository extends JpaRepository<LearningData,Integer>
         LocalDate endDate
     );
 
-    boolean existsBySkillName(String SkillName);
+    /*boolean existsBySkillName(String SkillName);*/
 
     boolean existsByUserAndCategoryAndSkillNameAndTargetMonth(
             User user,
@@ -26,4 +27,6 @@ public interface SkillListRepository extends JpaRepository<LearningData,Integer>
             String skillName,
             LocalDate targetMonth
     );
+
+    Optional<LearningData> findByIdAndUser(Integer id, User user);
 }
