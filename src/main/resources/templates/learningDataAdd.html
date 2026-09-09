@@ -10,16 +10,13 @@
 
 <body>
     <header>
-        <div class = "container">
-            <div class = "header-left">
-                <a th:href="@{/top}" class = "header-title">My Portfolio</a>
-            </div>
-            <div class = "header-right">
-                <form method = "post" th:action = "@{/logout}">
-                    <input type="submit" class = "logout-btn" value = "ログアウト" />
-                </form>
-            </div>
-            
+        <div class = "header-left">
+            <a th:href="@{/top}" class = "header-title">My Portfolio</a>
+        </div>
+        <div class = "header-right">
+            <form method = "post" th:action = "@{/logout}">
+                <input type="submit" class = "logout-btn" value = "ログアウト" />
+            </form>
         </div>
     </header>
 
@@ -72,7 +69,7 @@
 
     <footer>
         <div class = "container">
-            <p th:text = "${userName}">portfolio site</p>
+            <p>portfolio site</p>
         </div>
     </footer>
 

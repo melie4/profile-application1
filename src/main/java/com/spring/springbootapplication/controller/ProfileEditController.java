@@ -45,8 +45,6 @@ public class ProfileEditController {
             loginUserInfo.getSelfIntroduction()
             );
 
-           String userName = request.getRemoteUser();
-           mav.addObject("userName", userName + "  portfolio site");
 
            return mav;
     
@@ -63,9 +61,6 @@ public class ProfileEditController {
             
         if(result.hasErrors()){
         mav.setViewName("profile-edit");
-        
-        String userName = request.getRemoteUser();
-        mav.addObject("userName", userName + "  portfolio site");
        
         return mav;
         }

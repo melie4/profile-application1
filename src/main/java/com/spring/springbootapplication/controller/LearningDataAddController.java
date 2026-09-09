@@ -72,9 +72,6 @@ public class LearningDataAddController {
         if(result.hasErrors()){
             mav.setViewName("learningDataAdd");
 
-            String userName = request.getRemoteUser();
-            mav.addObject("userName", userName + "  portfolio site");
-
             Categories category = repository
                 .findById(dto.getCategory().getId())
                 .orElseThrow();
@@ -95,9 +92,6 @@ public class LearningDataAddController {
             .findById(dto.getCategory().getId())
             .orElseThrow();
         dto.setCategory(category);
-
-        String userName = request.getRemoteUser();
-        mav.addObject("userName", userName + "  portfolio site");
 
         return mav;
         }

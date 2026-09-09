@@ -66,4 +66,21 @@ public class LearningDataService {
         return learningData;
     }
 
+
+    //スキルチャート用
+    public Integer getTotalLearningTime(
+            List<LearningData> learningDataList,
+            Integer categoryId){
+
+        Integer total = 0;
+
+        for(LearningData data: learningDataList){
+            if(data.getCategory().getId().equals(categoryId)){
+                total += data.getLearningTime();
+            }
+        }
+
+        return total;
+    }
+
 }

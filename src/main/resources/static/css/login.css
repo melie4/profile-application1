@@ -2,9 +2,17 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    min-height: 100%;
+}
+
 body {
     margin: 0;
     font-family: "Roboto";
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 li{
@@ -67,6 +75,7 @@ header h2{
 
 /*main*/
 .login-main{
+    flex:1;
     text-align:center;
     width:100%;
     padding-bottom:310px;
