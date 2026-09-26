@@ -25,7 +25,7 @@
 
         <div class = "container">
             <div class = "title">自己紹介を編集する</div>
-            <form method = "post" th:action="@{/profile-edit}" th:object = "${userModel}" enctype = "multipart/form-data">
+            <form method = "post" th:action="@{/profile-edit}" th:object = "${userModel}" enctype = "multipart/form-data" id = "profileEditForm">
             <input type="hidden"
                    th:name="${_csrf.parameterName}"
                    th:value="${_csrf.token}">
@@ -34,8 +34,9 @@
 
                     <div class = "form">
                         <label for="selfIntroduction" class = "form-label">自己紹介文</label>
-                        <textarea class = "form-control" th:field = "*{selfIntroduction}"></textarea>
+                        <textarea class = "form-control" th:field = "*{selfIntroduction}" id = "selfIntroductionText"></textarea>
                         <div class = "err" th:if = "${#fields.hasErrors('selfIntroduction')}" th:errors = "*{selfIntroduction}"></div>
+                        <div class="err" id="selfIntroductionError"></div>
                     </div>
 
                     <div class = "form">
@@ -65,6 +66,7 @@
     </footer>
 
     <script>
+        //画像ファイル添付時に、ファイル名を取得
         const avatarImage = document.getElementById("avatarImage");
         const fileName = document.getElementById("fileName");
 
@@ -76,5 +78,24 @@
                 fileName.textContent = "";
             }
         })
+
+        //POST前に自己紹介文をバリデーションチェック
+        const form = document.getElementById("profileEditForm");
+        const selfIntroductionText = document.getElementById("selfIntroductionText");
+        const errorMessage = document.getElementById("selfIntroductionError");
+
+        form.addEventListener("submit", function(event) {
+            if(selfIntroductionText.value.length < 50 || 
+                selfIntroductionText.value.length > 200)
+            {
+                event.preventDefault();
+                errorMessage.textContent = "自己紹介は50文字以上200文字以下で入力してください";
+                
+                return;
+            }
+
+            errorMessage.textContent = "";
+        });
+
     </script>
 </body>
