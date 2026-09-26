@@ -107,7 +107,7 @@ header h2{
 
 .profile{
     width:960px;
-    height:427px;
+    min-height:427px;
     display:flex;
     align-items: center;
     gap:80px;
@@ -178,12 +178,12 @@ header h2{
 .avatar-name{
 
     width: 360px;
-    height: 57px;
-    line-height: 57px;
+    min-height: 57px;
     text-align: center;
     margin-top: 10px;
     margin-bottom:0;
     font-size: 20px;
+    overflow-wrap: anywhere;
 
 }
 
