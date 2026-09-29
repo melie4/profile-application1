@@ -73,7 +73,11 @@ public class UserService {
         String fileName =
             UUID.randomUUID() + "-" + originalFileName;
 
-        Path uploadDir = Paths.get("profile-images");
+        Path uploadDir = Paths.get("profile-images")
+                              .toAbsolutePath()
+                              .normalize();
+        
+        
         Files.createDirectories(uploadDir);
 
         Path imagePath = uploadDir.resolve(fileName);
