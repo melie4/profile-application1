@@ -11,13 +11,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry){
-        Path uploadDir =
-            Paths.get("profile-images")
-                 .toAbsolutePath()
-                 .normalize();
-        
         registry
             .addResourceHandler("/profile-images/**")
-            .addResourceLocations(uploadDir.toUri().toString());
+            .addResourceLocations("file:profile-images/");
     }    
 }
