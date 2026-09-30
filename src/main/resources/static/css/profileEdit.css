@@ -41,8 +41,10 @@ li{
     border-radius:4px;
     font-size:18px;
     margin:auto;
-    line-height:53px;
-    text-align:center;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
 
     transition: none;
     border: none;
@@ -87,10 +89,10 @@ header .header-title{
     width:170px;
     border-radius:4px;
     margin:0;
-    
-    /*以下でbtn内の文字を中央に*/
-    line-height:53px;
-    text-align:center;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
 
     transition: none;
     border: none;
@@ -171,9 +173,11 @@ header .header-title{
     color:#000000BF;
     background-color: #0000001A;
     font-size:14px;
-    line-height:32px;
-    text-align: center;
-    display:block;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
     width:202px;
     height:32px;
     margin-left:0;
