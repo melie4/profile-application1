@@ -46,7 +46,7 @@
                         <span id = "fileName"></span>
 
                         <input type="file" name = "avatarImage" id="avatarImage" accept = "image/*">
-                        
+                        <div class = "err" id = "avatarImageError"></div>
                     </div>
                     
 
@@ -69,10 +69,20 @@
         //画像ファイル添付時に、ファイル名を取得
         const avatarImage = document.getElementById("avatarImage");
         const fileName = document.getElementById("fileName");
+        const avatarImageError = document.getElementById("avatarImageError");
 
         avatarImage.addEventListener("change",function(){
+            avatarImageError.textContent = "";
+
             if(avatarImage.files.length > 0){
-                fileName.textContent = avatarImage.files[0].name;
+                const file = avatarImage.files[0];
+                fileName.textContent = file.name;
+
+                const maxFileSize = 5*1024*1024;
+                if(file.size > maxFileSize)
+                {
+                    avatarImageError.textContent = "アバター画像は5MB以下のファイルを選択してください" ;
+                }
             }
             else{
                 fileName.textContent = "";
@@ -83,18 +93,46 @@
         const form = document.getElementById("profileEditForm");
         const selfIntroductionText = document.getElementById("selfIntroductionText");
         const errorMessage = document.getElementById("selfIntroductionError");
-
+        
         form.addEventListener("submit", function(event) {
+
+            let hasError = false;
+
             if(selfIntroductionText.value.length < 50 || 
                 selfIntroductionText.value.length > 200)
             {
                 event.preventDefault();
                 errorMessage.textContent = "自己紹介は50文字以上200文字以下で入力してください";
                 
-                return;
+                hasError = true;
+            }
+            else
+            {
+                errorMessage.textContent = "";
             }
 
-            errorMessage.textContent = "";
+
+            if(avatarImage.files.length > 0)
+            {
+                const file = avatarImage.files[0];
+                const maxFileSize = 5*1024*1024;
+
+                if(file.size > maxFileSize){
+                    avatarImageError.textContent = "アバター画像は5MB以下のファイルを選択してください";
+
+                    hasError = true;
+                }
+                else
+                {
+                    avatarImageError.textContent = "";
+                }
+            }
+            
+            if(hasError)
+            {
+                event.preventDefault();
+                return;
+            }      
         });
 
     </script>
