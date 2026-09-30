@@ -40,8 +40,11 @@ li{
     border-radius:4px;
     font-size:18px;
     margin:auto;
-    line-height:53px;
-    text-align:center;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
     text-decoration: none;
     transition:none;
     
