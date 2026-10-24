@@ -29,7 +29,7 @@ public class LearningDataService {
         LocalDate endDate = selectedMonth.atEndOfMonth();
 
         
-        return repository.findByUserAndTargetMonthBetween(user, startDate, endDate);
+        return repository.findByUserAndTargetMonthBetweenOrderByIdAsc(user, startDate, endDate);
 
 
     }

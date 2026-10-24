@@ -13,7 +13,7 @@ import com.spring.springbootapplication.entity.User;
 
 @Repository
 public interface SkillListRepository extends JpaRepository<LearningData,Integer>{
-     List<LearningData> findByUserAndTargetMonthBetween(
+     List<LearningData> findByUserAndTargetMonthBetweenOrderByIdAsc(
         User user,
         LocalDate startDate,
         LocalDate endDate
